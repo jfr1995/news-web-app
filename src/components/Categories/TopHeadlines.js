@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Feed from "../Feed/Feed";
 import { withNews } from "../News/context";
-import Loading from "../Loading/loading";
 
 const STATE = {
   language: "en"
@@ -27,7 +26,7 @@ class TopHeadLines extends Component {
     return this.state.articles ? (
       <Feed articles={this.state.articles} />
     ) : (
-      <Loading />
+      <div />
     );
   }
 }

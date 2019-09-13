@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Feed from "../Feed/Feed";
 import * as STATES from "../../constants /states";
 import { withNews } from "../News/context";
-import Loading from "../Loading/loading";
 
 class Technology extends Component {
   constructor(props) {
@@ -22,7 +21,7 @@ class Technology extends Component {
     return this.state.articles ? (
       <Feed articles={this.state.articles} />
     ) : (
-      <Loading />
+      <div />
     );
   }
 }

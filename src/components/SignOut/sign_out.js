@@ -1,5 +1,4 @@
 import React from "react";
-import "../../css/style.css";
 import { withFirebase } from "../Firebase/index";
 
 const SignOutButton = ({ firebase }) => {
