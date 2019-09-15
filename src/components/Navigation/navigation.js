@@ -19,86 +19,78 @@ const Navigation = () => {
   );
 };
 
-// const Navigation = () => {
+// authorized user navigation
+// const NavigationAuth = ({ authUser }) => {
 //   return (
-//     <div className="navigation">
-//       <input
-//         className="navigation__checkbox"
-//         type="checkbox"
-//         id="navi-toggle"
-//       />
-//       <label htmlFor="navi-toggle" className="navigation__button">
-//         <span className="navigation__icon">&nbsp;</span>
-//       </label>
-//       <div className="navigation__background">&nbsp;</div>
-//       <nav className="navigation__nav">
-//         <AuthUserContext.Consumer>
-//           {authUser =>
-//             authUser ? (
-//               <NavigationAuth authUser={authUser} />
-//             ) : (
-//               <NavigationNonAuth />
-//             )
-//           }
-//         </AuthUserContext.Consumer>
-//       </nav>
-//     </div>
+//     <ul>
+//       <li>
+//         <Link to={ROUTES.LANDING}>Landing</Link>
+//       </li>
+//       <li>
+//         <Link to={ROUTES.HOME}>Home</Link>
+//       </li>
+//       <li>
+//         <Link to={ROUTES.ACCOUNT}>Account</Link>
+//       </li>
+
+//       {authUser.roles.includes(ROLES.ADMIN) && (
+//         <li>
+//           <Link to={ROUTES.ADMIN}>Admin</Link>
+//         </li>
+//       )}
+
+//       <li>
+//         <SignOutButton />
+//       </li>
+//     </ul>
 //   );
 // };
-// authorized user navigation
-const NavigationAuth = ({ authUser }) => {
-  return (
-    <ul>
-      <li>
-        <Link to={ROUTES.LANDING}>Landing</Link>
-      </li>
-      <li>
-        <Link to={ROUTES.HOME}>Home</Link>
-      </li>
-      <li>
-        <Link to={ROUTES.ACCOUNT}>Account</Link>
-      </li>
-
-      {authUser.roles.includes(ROLES.ADMIN) && (
-        <li>
-          <Link to={ROUTES.ADMIN}>Admin</Link>
-        </li>
-      )}
-
-      <li>
-        <SignOutButton />
-      </li>
-    </ul>
-  );
-};
 
 const NavigationNonAuth = () => (
   <nav>
     <div className="nav-wrapper blue">
-      <ul id="nav-mobile" className="right">
-        <li>
-          <Link to={ROUTES.LANDING}>Landing</Link>
-        </li>
-        <li>
-          <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-        </li>
-      </ul>
+      <div className="container">
+        <ul id="nav-mobile" className="right">
+          <li>
+            <Link to={ROUTES.LANDING}>Landing</Link>
+          </li>
+          <li>
+            <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 );
 
-// non-authorized user navigation menu
-// const NavigationNonAuth = () => (
-//   <ul>
-//     <li>
-//       <Link to={ROUTES.LANDING}>Landing</Link>
-//     </li>
-//     <li>
-//       <Link className="waves-effect waves-light btn" to={ROUTES.SIGN_IN}>
-//         Sign In
-//       </Link>
-//     </li>
-//   </ul>
-// );
+const NavigationAuth = ({ authUser }) => (
+  <nav>
+    <div className="nav-wrapper blue ">
+      <div className="container">
+        <ul id="nav-mobile blue" className="right">
+          <li>
+            <Link to={ROUTES.LANDING}>Landing</Link>
+          </li>
+          <li>
+            <Link to={ROUTES.HOME}>Home</Link>
+          </li>
+          <li>
+            <Link to={ROUTES.ACCOUNT}>Account</Link>
+          </li>
+
+          {authUser.roles.includes(ROLES.ADMIN) && (
+            <li>
+              <Link to={ROUTES.ADMIN}>Admin</Link>
+            </li>
+          )}
+
+          <li>
+            <SignOutButton />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+);
 
 export default Navigation;
