@@ -98,12 +98,7 @@ class SignInFacebookBase extends Component {
     const { error } = this.state;
     return (
       <form onSubmit={this.onSubmit}>
-        <button
-          className="waves-effect waves-light btn  light-blue darken-1"
-          type="submit"
-        >
-          Sign In With Facebook{" "}
-        </button>
+        <button type="submit">Sign In With Facebook </button>
         {error && <p> {error.message}</p>}
       </form>
     );
@@ -149,27 +144,12 @@ class SignInGoogleBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <button
-          className="waves-effect waves-light btn  red darken-1"
-          type="submit"
-        >
-          Sign In With Google{" "}
-        </button>
+        <button type="submit">Sign In With Google </button>
         {error && <p>{error.message}</p>}
       </form>
     );
   } // end of render
 } // end of google base
-
-const SignInGoogle = compose(
-  withRouter,
-  withFirebase
-)(SignInGoogleBase);
-
-const SignInFacebook = compose(
-  withRouter,
-  withFirebase
-)(SignInFacebookBase);
 
 class SignInFormBase extends Component {
   constructor(props) {
@@ -215,24 +195,10 @@ class SignInFormBase extends Component {
           type="password"
           placeholder="Password"
         />
-        <div className="row" />
-        <div className="row">
-          <div className="col s2">
-            <button
-              className="waves-effect waves-light btn"
-              disabled={isInvalid}
-              type="submit"
-            >
-              Sign In
-            </button>
-          </div>
-          <div className="col s3">
-            <SignInGoogle />
-          </div>
-          <div className="col s3">
-            <SignInFacebook />
-          </div>
-        </div>
+
+        <button disabled={isInvalid} type="submit">
+          Sign In
+        </button>
 
         {error && error.message}
       </form>
@@ -240,6 +206,7 @@ class SignInFormBase extends Component {
   }
 }
 
+// Recompose for sign in copmponents
 const SignInForm = compose(
   withRouter,
   withFirebase
@@ -249,12 +216,24 @@ const SignInTwitter = compose(
   withRouter,
   withFirebase
 )(SignInTwitterBase);
+
+const SignInGoogle = compose(
+  withRouter,
+  withFirebase
+)(SignInGoogleBase);
+
+const SignInFacebook = compose(
+  withRouter,
+  withFirebase
+)(SignInFacebookBase);
+
 const SignIn = () => {
   return (
     <div className="container row">
       <h2>Sign In Page</h2>
       <SignInForm />
-
+      <SignInGoogle></SignInGoogle>
+      <SignInFacebook></SignInFacebook>
       <PasswordForgetLink />
       <SignUpLink />
     </div>
