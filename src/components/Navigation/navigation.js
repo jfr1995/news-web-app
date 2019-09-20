@@ -40,7 +40,7 @@ const NavigationNonAuth = () => {
       <AppBar className={navStyle.appB} color="transparent" position="static">
         <Toolbar color="inherit">
           <Link className={navStyle.link} to={ROUTES.LANDING}>
-            <Button m={10}>Landing</Button>
+            <Button>Landing</Button>
           </Link>
           <Link className={navStyle.link} to={ROUTES.SIGN_IN}>
             <Button>Sign In</Button>

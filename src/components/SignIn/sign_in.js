@@ -1,11 +1,15 @@
 import React, { Component } from "react";
-
 import { withRouter } from "react-router-dom";
 import { withFirebase } from "../Firebase/index";
 import { compose } from "recompose";
 import { SignUpLink } from "../SignUp/sign_up";
 import * as ROUTES from "../../constants /routes";
 import { PasswordForgetLink } from "../PasswordForget/password_forget";
+import Grid from "@material-ui/core/Grid";
+import { makeStyles } from "@material-ui/styles";
+import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
+import TextField from "@material-ui/core/TextField";
 
 const ERROR_CODE_ACCOUNT_EXISTS =
   "auth/account-exists-with-different-credential";
@@ -181,14 +185,20 @@ class SignInFormBase extends Component {
     const isInvalid = password === "" || email === "";
     return (
       <form onSubmit={this.onSubmit}>
-        <input
+        <TextField
+          margin="normal"
+          variant="outlined"
+          label="email"
           name="email"
           value={email}
           onChange={this.onChange}
           type="text"
           placeholder="Email Address"
         />
-        <input
+        <TextField
+          margin="normal"
+          variant="outlined"
+          label="password"
           name="password"
           value={password}
           onChange={this.onChange}
@@ -196,9 +206,9 @@ class SignInFormBase extends Component {
           placeholder="Password"
         />
 
-        <button disabled={isInvalid} type="submit">
+        <Button disabled={isInvalid} type="submit">
           Sign In
-        </button>
+        </Button>
 
         {error && error.message}
       </form>
@@ -227,15 +237,46 @@ const SignInFacebook = compose(
   withFirebase
 )(SignInFacebookBase);
 
+const gridStyles = makeStyles(theme => ({
+  root: {
+    marginTop: "10px",
+    border: "1px solid red",
+    flexDirection: "column",
+    justifyContent: "center"
+  },
+  item: {
+    margin: "10px",
+    alignSelf: "center"
+  },
+  container: {
+    margin: "auto"
+  }
+}));
+
 const SignIn = () => {
+  const classes = gridStyles();
   return (
-    <div className="container row">
-      <SignInForm />
-      <SignInGoogle></SignInGoogle>
-      <SignInFacebook></SignInFacebook>
-      <PasswordForgetLink />
-      <SignUpLink />
-    </div>
+    <React.Fragment>
+      <Container>
+        <Grid className={classes.root} container>
+          <Grid className={classes.item} item>
+            <SignInForm />
+          </Grid>
+          <Grid className={classes.item} item>
+            <SignInGoogle></SignInGoogle>
+          </Grid>
+          <Grid className={classes.item} item>
+            <SignInFacebook></SignInFacebook>
+          </Grid>
+          <Grid className={classes.item} item>
+            <PasswordForgetLink />
+          </Grid>
+          <Grid className={classes.item} item>
+            <SignUpLink />
+          </Grid>
+        </Grid>
+      </Container>
+    </React.Fragment>
   );
 };
 
