@@ -8,7 +8,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import { relative } from "path";
 
-const styles = ({ breakpoint, palatte }) => ({
+const styles = () => ({
   root: {
     width: "100%",
     textAlign: "left",
@@ -22,4 +22,4 @@ const styles = ({ breakpoint, palatte }) => ({
   }
 });
 
-const navigationNonAuth = withStyles(styles)();
+//export default function

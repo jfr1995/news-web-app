@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants /routes";
 import * as ROLES from "../../constants /roles";
 import { AuthUserContext } from "../Session/session";
-import CssBaseline from "@material-ui/core/CssBaseline";
+import Toolbar from "@material-ui/core/Toolbar";
+import AppBar from "@material-ui/core/AppBar";
 import { makeStyles } from "@material-ui/core/styles";
 import Box from "@material-ui/core/Box";
+import { Button } from "@material-ui/core";
 
 const Navigation = () => {
   return (
@@ -22,27 +24,30 @@ const Navigation = () => {
   );
 };
 
-const linkStyles = makeStyles({
-  root: {
+const navStyles = makeStyles({
+  link: {
     textDecoration: "none",
     textTransform: "uppercase"
+  },
+  appB: {
+    boxShadow: "none"
   }
 });
 const NavigationNonAuth = () => {
-  const test = linkStyles();
+  const navStyle = navStyles();
   return (
-    <Box>
-      <Box display="inline-flex" justifyContent="flex-start">
-        <Link className={test.root} to={ROUTES.LANDING}>
-          Landing
-        </Link>
-      </Box>
-      <Box display="inline-flex" justifyContent="flex-end">
-        <Link className={test.root} to={ROUTES.SIGN_IN}>
-          Sign In
-        </Link>
-      </Box>
-    </Box>
+    <div>
+      <AppBar className={navStyle.appB} color="transparent" position="static">
+        <Toolbar color="inherit">
+          <Link className={navStyle.link} to={ROUTES.LANDING}>
+            <Button m={10}>Landing</Button>
+          </Link>
+          <Link className={navStyle.link} to={ROUTES.SIGN_IN}>
+            <Button>Sign In</Button>
+          </Link>
+        </Toolbar>
+      </AppBar>
+    </div>
   );
 };
 

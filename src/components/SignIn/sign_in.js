@@ -230,7 +230,6 @@ const SignInFacebook = compose(
 const SignIn = () => {
   return (
     <div className="container row">
-      <h2>Sign In Page</h2>
       <SignInForm />
       <SignInGoogle></SignInGoogle>
       <SignInFacebook></SignInFacebook>
