@@ -4,6 +4,13 @@ import { withFirebase } from "../Firebase/index";
 import { compose } from "recompose";
 import * as ROUTES from "../../constants /routes";
 import * as ERRORS from "../../constants /errorCodes";
+import Button from "@material-ui/core/Button";
+import { styled } from "@material-ui/core";
+
+const GoogleButton = styled(Button)({
+  borderRadius: "10%",
+  backgroundColor: "#f44336"
+});
 
 class SignInGoogleBase extends Component {
   constructor(props) {
@@ -44,7 +51,9 @@ class SignInGoogleBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <button type="submit">Sign In With Google </button>
+        <GoogleButton size="large" type="submit">
+          <i class="fab fa-google fa-2x"></i>
+        </GoogleButton>
         {error && <p>{error.message}</p>}
       </form>
     );
