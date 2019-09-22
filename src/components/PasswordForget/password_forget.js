@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withFirebase } from "../Firebase/index";
 import * as ROUTES from "../../constants /routes";
+import { makeStyles } from "@material-ui/core";
+import Button from "@material-ui/core/Button";
+
 const PasswordForgetPage = () => (
   <div>
     <h1>PasswordForget</h1>
@@ -49,11 +52,27 @@ class PasswordForgetFormBase extends Component {
     );
   }
 }
-const PasswordForgetLink = () => (
-  <p>
-    <Link to={ROUTES.PASSWORD_FORGET}>Forgot Password?</Link>
-  </p>
-);
+
+const linkStyles = makeStyles(theme => ({
+  link: {
+    textDecoration: "none",
+    textTransform: "uppercase",
+    justifySelf: "center",
+    alignSelf: "center",
+    alignContent: "center",
+    justifyContent: "center"
+  }
+}));
+const PasswordForgetLink = () => {
+  const classes = linkStyles();
+  return (
+    <Link className={classes.link} to={ROUTES.PASSWORD_FORGET}>
+      <Button size="small" variant="outlined" color="primary">
+        forgot password?
+      </Button>
+    </Link>
+  );
+};
 export default PasswordForgetPage;
 const PasswordForgetForm = withFirebase(PasswordForgetFormBase);
 export { PasswordForgetForm, PasswordForgetLink };

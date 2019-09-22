@@ -11,13 +11,11 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1,
-    padding: "20px"
+    flexGrow: 1
   },
   appBar: {
     position: "static",
-    background: "transparent",
-    boxShadow: "none"
+    background: "transparent"
   },
   link: {
     textDecoration: "none",
