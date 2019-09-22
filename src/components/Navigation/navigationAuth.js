@@ -8,18 +8,6 @@ import AppBar from "@material-ui/core/AppBar";
 import Typography from "@material-ui/core/Typography";
 import { relative } from "path";
 
-const styles = () => ({
-  root: {
-    width: "100%",
-    textAlign: "left",
-    height: 700,
-    position: "relative",
-    color: "#ffffff",
-    [breakpoints.only("xs")]: {
-      position: "relative",
-      height: 566
-    }
-  }
-});
+const NavigationAuth = ({ authUser }) => <h1>auth nav</h1>;
 
-//export default function
+export default NavigationAuth;

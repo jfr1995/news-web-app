@@ -6,7 +6,7 @@ import { SignUpLink } from "../SignUp/sign_up";
 import * as ROUTES from "../../constants /routes";
 import { PasswordForgetLink } from "../PasswordForget/password_forget";
 import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/styles";
+import { styled, makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
@@ -155,6 +155,16 @@ class SignInGoogleBase extends Component {
   } // end of render
 } // end of google base
 
+const SignInGrid = styled(Grid)({
+  display: "flex",
+  flexDirection: "column"
+});
+
+const SignInTextField = styled(TextField)({
+  width: "100%",
+  height: "70%"
+});
+
 class SignInFormBase extends Component {
   constructor(props) {
     super(props);
@@ -183,34 +193,41 @@ class SignInFormBase extends Component {
   render() {
     const { email, password, error } = this.state;
     const isInvalid = password === "" || email === "";
+
     return (
       <form onSubmit={this.onSubmit}>
-        <TextField
-          margin="normal"
-          variant="outlined"
-          label="email"
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <TextField
-          margin="normal"
-          variant="outlined"
-          label="password"
-          name="password"
-          value={password}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-
-        <Button disabled={isInvalid} type="submit">
-          Sign In
-        </Button>
-
-        {error && error.message}
+        <SignInGrid container>
+          <Grid item xs={12}>
+            <SignInTextField
+              margin="normal"
+              variant="outlined"
+              label="email"
+              name="email"
+              value={email}
+              onChange={this.onChange}
+              type="text"
+              placeholder="Email Address"
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              margin="normal"
+              variant="outlined"
+              label="password"
+              name="password"
+              value={password}
+              onChange={this.onChange}
+              type="password"
+              placeholder="Password"
+            />
+          </Grid>
+          <Grid item>
+            <Button disabled={isInvalid} type="submit">
+              Sign In
+            </Button>
+          </Grid>
+          {error && error.message}
+        </SignInGrid>
       </form>
     );
   }
