@@ -2,8 +2,19 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { withFirebase } from "../Firebase/index";
 import { compose } from "recompose";
+import { styled } from "@material-ui/core/styles";
 import * as ROUTES from "../../constants /routes";
 import * as ERRORS from "../../constants /errorCodes";
+import Button from "@material-ui/core/Button";
+
+const FacebookButton = styled(Button)({
+  margin: "20px",
+  borderRadius: "50%",
+  height: "60px",
+  width: "60px",
+  backgroundColor: "#3b5998",
+  color: "white"
+});
 
 class SignInFacebookBase extends Component {
   constructor(props) {
@@ -40,7 +51,9 @@ class SignInFacebookBase extends Component {
     const { error } = this.state;
     return (
       <form onSubmit={this.onSubmit}>
-        <button type="submit">Sign In With Facebook </button>
+        <FacebookButton variant="contained" type="submit">
+          <i class="fab fa-facebook-f fa-2x"></i>{" "}
+        </FacebookButton>
         {error && <p> {error.message}</p>}
       </form>
     );

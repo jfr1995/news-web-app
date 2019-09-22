@@ -3,15 +3,12 @@ import { withRouter } from "react-router-dom";
 import { withFirebase } from "../Firebase/index";
 import { compose } from "recompose";
 import * as ROUTES from "../../constants /routes";
-import * as ERRORS from "../../constants /errorCodes";
 import TextField from "@material-ui/core/TextField";
-import { styled, makeStyles } from "@material-ui/core/styles";
+import { styled } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import { Container } from "@material-ui/core";
+
 import FormControl from "@material-ui/core/FormControl";
-import { palette } from "@material-ui/system";
-import grey from "@material-ui/core/colors/grey";
 
 const INITIAL_STATE = {
   email: "",
@@ -98,11 +95,11 @@ class SignInFormBase extends Component {
             <SignInButton
               color="primary"
               size="large"
-              variant="outlined"
+              variant="contained"
               disabled={isInvalid}
               type="submit"
             >
-              Sign In
+              Login
             </SignInButton>
           </ItemGrid>
         </ContainerGrid>

@@ -8,8 +8,12 @@ import Button from "@material-ui/core/Button";
 import { styled } from "@material-ui/core";
 
 const GoogleButton = styled(Button)({
-  borderRadius: "10%",
-  backgroundColor: "#f44336"
+  margin: "20px",
+  borderRadius: "50%",
+  height: "60px",
+  width: "60px",
+  backgroundColor: "#dd4b39",
+  color: "white"
 });
 
 class SignInGoogleBase extends Component {
@@ -51,7 +55,7 @@ class SignInGoogleBase extends Component {
 
     return (
       <form onSubmit={this.onSubmit}>
-        <GoogleButton size="large" type="submit">
+        <GoogleButton variant="contained" size="large" type="submit">
           <i class="fab fa-google fa-2x"></i>
         </GoogleButton>
         {error && <p>{error.message}</p>}

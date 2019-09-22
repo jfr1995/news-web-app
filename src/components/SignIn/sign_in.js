@@ -9,15 +9,18 @@ import { SignInGoogle } from "./signInGoogle";
 import { SignInFacebook } from "./signInFacebook";
 import { SignInForm } from "./signInForm";
 import Divider from "@material-ui/core/Divider";
-import Blue from "@material-ui/core/colors/indigo";
 const gridStyles = makeStyles(theme => ({
   grid: {
     flexDirection: "column"
+  },
+  grid2: {
+    justifyContent: "center"
   },
   item: {
     margin: "10px",
     width: "100%"
   },
+
   container: {
     padding: "10px 20rem"
   }
@@ -33,10 +36,14 @@ const SignIn = () => {
         </Grid>
         <Divider className={classes.item} />
         <Grid className={classes.item} item>
-          <SignInGoogle />
-        </Grid>
-        <Grid className={classes.item} item>
-          <SignInFacebook />
+          <Grid className={classes.grid2} container>
+            <Grid item>
+              <SignInGoogle />
+            </Grid>
+            <Grid item>
+              <SignInFacebook />
+            </Grid>
+          </Grid>
         </Grid>
         <Grid className={classes.item} item>
           <PasswordForgetLink />
