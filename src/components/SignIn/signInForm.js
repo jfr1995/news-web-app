@@ -71,7 +71,7 @@ class SignInFormBase extends Component {
             <SignInTextField
               margin="normal"
               variant="outlined"
-              label="email"
+              label="Email"
               name="email"
               value={email}
               onChange={this.onChange}

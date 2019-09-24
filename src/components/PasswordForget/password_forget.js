@@ -2,16 +2,28 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { withFirebase } from "../Firebase/index";
 import * as ROUTES from "../../constants /routes";
-import { makeStyles } from "@material-ui/core";
+import { makeStyles, TextField, Grid } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+import Typography from "@material-ui/core/Typography";
+import { styled } from "@material-ui/styles";
+import FormControl from "@material-ui/core/FormControl";
 
-const PasswordForgetPage = () => (
-  <div>
-    <h1>PasswordForget</h1>
-    <PasswordForgetForm />
-  </div>
-);
+const FormContainerGrid = styled(Grid)({
+  flexDirection: "row",
+  justifyContent: "center",
+  alignItems: "center"
+});
+
+const FormContainerItem = styled(Grid)({
+  margin: "50px"
+});
+
+const FormTextField = styled(TextField)({
+  minWidth: "25rem"
+});
+
 const INITIAL_STATE = { email: "", error: null };
+// Base component from password forget page
 class PasswordForgetFormBase extends Component {
   constructor(props) {
     super(props);
@@ -36,33 +48,77 @@ class PasswordForgetFormBase extends Component {
     const { email, error } = this.state;
     const isInvalid = email === "";
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="email"
-          value={this.state.email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <button disabled={isInvalid} type="submit">
-          Reset My Password
-        </button>
+      <FormControl onSubmit={this.onSubmit}>
+        <FormContainerGrid container>
+          <FormContainerItem item>
+            <FormTextField
+              label="Email"
+              variant="standard"
+              name="email"
+              value={this.state.email}
+              onChange={this.onChange}
+              type="text"
+              placeholder="Email Address"
+            />
+          </FormContainerItem>
+          <FormContainerItem item>
+            <Button
+              variant="contained"
+              color="primary"
+              disabled={isInvalid}
+              type="submit"
+            >
+              Reset My Password
+            </Button>
+          </FormContainerItem>
+        </FormContainerGrid>
         {error && <p>{error.message}</p>}
-      </form>
+      </FormControl>
     );
   }
 }
 
+const PasswordForgetForm = withFirebase(PasswordForgetFormBase);
+// Password forget page
+const pageStyles = makeStyles(theme => ({
+  test: {
+    flexDirection: "column",
+
+    alignItems: "center"
+  },
+  text: {
+    textTransform: "uppercase",
+    margin: "50px auto",
+    fontWeight: "bold"
+  }
+}));
+
+const PasswordForgetPage = () => {
+  const classes = pageStyles();
+  return (
+    <Grid className={classes.test} container>
+      <Grid item>
+        <Typography className={classes.text} variant="h4">
+          password reset
+        </Typography>
+      </Grid>
+
+      <Grid item>
+        <PasswordForgetForm />
+      </Grid>
+    </Grid>
+  );
+};
+
+// Password forget link
+
 const linkStyles = makeStyles(theme => ({
   link: {
     textDecoration: "none",
-    textTransform: "uppercase",
-    justifySelf: "center",
-    alignSelf: "center",
-    alignContent: "center",
-    justifyContent: "center"
+    textTransform: "uppercase"
   }
 }));
+
 const PasswordForgetLink = () => {
   const classes = linkStyles();
   return (
@@ -73,6 +129,7 @@ const PasswordForgetLink = () => {
     </Link>
   );
 };
+
 export default PasswordForgetPage;
-const PasswordForgetForm = withFirebase(PasswordForgetFormBase);
+
 export { PasswordForgetForm, PasswordForgetLink };

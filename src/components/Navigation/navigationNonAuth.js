@@ -14,14 +14,15 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1
   },
   appBar: {
-    position: "static",
-    background: "transparent"
+    position: "static"
   },
   link: {
     textDecoration: "none",
     textTransform: "uppercase"
   },
-  btn: {}
+  btn: {
+    color: "white"
+  }
 }));
 
 // wrap links in button
@@ -32,13 +33,13 @@ const NavigationNonAuth = () => {
       <AppBar className={classes.appBar}>
         <Toolbar>
           <Link to={ROUTES.LANDING} className={classes.link}>
-            <Button size="large" variant="contained" color="primary">
+            <Button size="large" variant="text" className={classes.btn}>
               About
             </Button>
           </Link>
           <Typography className={classes.root}>&nbsp;</Typography>
           <Link to={ROUTES.SIGN_IN} className={classes.link}>
-            <Button size="large" variant="contained" color="primary">
+            <Button size="large" variant="text" className={classes.btn}>
               Sign In
             </Button>
           </Link>

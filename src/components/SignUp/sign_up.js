@@ -7,6 +7,7 @@ import { withFirebase } from "../Firebase";
 // so we can change routes after sign in/out procedure
 import * as ROUTES from "../../constants /routes";
 import * as ROLES from "../../constants /roles";
+import Typography from "@material-ui/core/Typography";
 
 const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
 const ERROR_MSG_ACCOUNT_EXISTS = `
@@ -16,10 +17,6 @@ const ERROR_MSG_ACCOUNT_EXISTS = `
   to sign-in with one of them. Afterward, associate your accounts
   on your personal account page.
 `;
-
-/*
-  object to hold the innitial state of the field for our form
-*/
 const INITIAL_STATE = {
   username: "",
   email: "",
@@ -27,17 +24,6 @@ const INITIAL_STATE = {
   passwordTwo: "",
   isAdmin: false,
   error: null
-};
-
-// functional react component that renders the header and sign up form
-
-const SignUp = () => {
-  return (
-    <div>
-      <h1>Sign Up page</h1>
-      <SignUpForm />
-    </div>
-  );
 };
 
 /*
@@ -158,9 +144,9 @@ class SignUpFormBase extends Component {
 }
 
 const SignUpLink = () => (
-  <p>
-    Don't have an account? <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-  </p>
+  <Typography>
+    Don't have an account? <Link to={ROUTES.SIGN_UP}>SIGN UP</Link>
+  </Typography>
 );
 
 /*
@@ -174,6 +160,15 @@ const SignUpForm = compose(
   withRouter,
   withFirebase
 )(SignUpFormBase);
+
+const SignUp = () => {
+  return (
+    <div>
+      <h1>Sign Up page</h1>
+      <SignUpForm />
+    </div>
+  );
+};
 
 export default SignUp;
 
