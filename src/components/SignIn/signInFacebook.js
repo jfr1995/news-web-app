@@ -52,7 +52,7 @@ class SignInFacebookBase extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         <FacebookButton variant="contained" type="submit">
-          <i class="fab fa-facebook-f fa-2x"></i>{" "}
+          <i className="fab fa-facebook-f fa-2x"></i>{" "}
         </FacebookButton>
         {error && <p> {error.message}</p>}
       </form>

@@ -3,7 +3,6 @@ import { SignUpLink } from "../SignUp/sign_up";
 import { PasswordForgetLink } from "../PasswordForget/password_forget";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
 import { SignInTwitter } from "./signInTwitter";
 import { SignInGoogle } from "./signInGoogle";
 import { SignInFacebook } from "./signInFacebook";

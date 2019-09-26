@@ -70,7 +70,7 @@ class SignInFormBase extends Component {
           <ItemGrid item>
             <SignInTextField
               margin="normal"
-              variant="outlined"
+              variant="filled"
               label="Email"
               name="email"
               value={email}
@@ -82,8 +82,8 @@ class SignInFormBase extends Component {
           <ItemGrid item>
             <SignInTextField
               margin="normal"
-              variant="outlined"
-              label="password"
+              variant="filled"
+              label="Password"
               name="password"
               value={password}
               onChange={this.onChange}

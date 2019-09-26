@@ -38,7 +38,7 @@ const NavigationNonAuth = () => {
             </Button>
           </Link>
           <Typography className={classes.root}>&nbsp;</Typography>
-          <Link to={ROUTES.SIGN_IN} className={classes.link}>
+          <Link to={ROUTES.SIGN_IN} className={classes.link} replace>
             <Button size="large" variant="text" className={classes.btn}>
               Sign In
             </Button>

@@ -8,6 +8,8 @@ import { withFirebase } from "../Firebase";
 import * as ROUTES from "../../constants /routes";
 import * as ROLES from "../../constants /roles";
 import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/styles";
+import indogo from "@material-ui/core/colors/indigo";
 
 const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
 const ERROR_MSG_ACCOUNT_EXISTS = `
@@ -143,11 +145,25 @@ class SignUpFormBase extends Component {
   }
 }
 
-const SignUpLink = () => (
-  <Typography>
-    Don't have an account? <Link to={ROUTES.SIGN_UP}>SIGN UP</Link>
-  </Typography>
-);
+const linkStyles = makeStyles(theme => ({
+  link: {
+    textDecoration: "none",
+    color: indogo[500],
+    textTransform: "uppercase",
+    fontWeight: "bold"
+  }
+}));
+const SignUpLink = () => {
+  const classes = linkStyles();
+  return (
+    <Typography>
+      Don't have an account?{" "}
+      <Link className={classes.link} to={ROUTES.SIGN_UP}>
+        SIGN UP
+      </Link>
+    </Typography>
+  );
+};
 
 /*
 

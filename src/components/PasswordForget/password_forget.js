@@ -53,7 +53,7 @@ class PasswordForgetFormBase extends Component {
           <FormContainerItem item>
             <FormTextField
               label="Email"
-              variant="standard"
+              variant="filled"
               name="email"
               value={this.state.email}
               onChange={this.onChange}

@@ -56,7 +56,7 @@ class SignInGoogleBase extends Component {
     return (
       <form onSubmit={this.onSubmit}>
         <GoogleButton variant="contained" size="large" type="submit">
-          <i class="fab fa-google fa-2x"></i>
+          <i className="fab fa-google fa-2x"></i>
         </GoogleButton>
         {error && <p>{error.message}</p>}
       </form>
