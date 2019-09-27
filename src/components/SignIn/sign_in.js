@@ -8,6 +8,7 @@ import { SignInGoogle } from "./signInGoogle";
 import { SignInFacebook } from "./signInFacebook";
 import { SignInForm } from "./signInForm";
 import Divider from "@material-ui/core/Divider";
+import Fade from "@material-ui/core/Fade";
 
 const gridStyles = makeStyles(theme => ({
   grid: {
@@ -32,28 +33,30 @@ const gridStyles = makeStyles(theme => ({
 const SignIn = () => {
   const classes = gridStyles();
   return (
-    <Grid className={classes.grid} container>
-      <Grid className={classes.item} item>
-        <SignInForm />
-      </Grid>
-      <Divider className={classes.item} />
-      <Grid className={classes.item} item>
-        <Grid className={classes.grid2} container>
-          <Grid item>
-            <SignInGoogle />
-          </Grid>
-          <Grid item>
-            <SignInFacebook />
+    <Fade in={true} timeout={500}>
+      <Grid className={classes.grid} container>
+        <Grid className={classes.item} item>
+          <SignInForm />
+        </Grid>
+        <Divider className={classes.item} />
+        <Grid className={classes.item} item>
+          <Grid className={classes.grid2} container>
+            <Grid item>
+              <SignInGoogle />
+            </Grid>
+            <Grid item>
+              <SignInFacebook />
+            </Grid>
           </Grid>
         </Grid>
+        <Grid align="center" className={classes.item} item>
+          <PasswordForgetLink />
+        </Grid>
+        <Grid align="center" className={classes.item} item>
+          <SignUpLink />
+        </Grid>
       </Grid>
-      <Grid align="center" className={classes.item} item>
-        <PasswordForgetLink />
-      </Grid>
-      <Grid align="center" className={classes.item} item>
-        <SignUpLink />
-      </Grid>
-    </Grid>
+    </Fade>
   );
 };
 

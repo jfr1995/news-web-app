@@ -1,8 +1,9 @@
 // Logic imports
 import React from "react";
 import { AuthUserContext } from "../Session/session";
-import NavigationNonAuth from "./navigationNonAuth";
 import NavigationAuth from "./navigationAuth";
+import NavBar from "./navBar";
+import NavNonAuthItems from "./navNonAuthItems";
 
 const Navigation = () => {
   return (
@@ -11,7 +12,9 @@ const Navigation = () => {
         authUser ? (
           <NavigationAuth authUser={authUser} />
         ) : (
-          <NavigationNonAuth />
+          <NavBar>
+            <NavNonAuthItems />
+          </NavBar>
         )
       }
     </AuthUserContext.Consumer>
