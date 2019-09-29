@@ -12,7 +12,7 @@ const Navigation = () => {
         authUser ? (
           <NavigationAuth authUser={authUser} />
         ) : (
-          <NavBar>
+          <NavBar authUser={authUser}>
             <NavNonAuthItems />
           </NavBar>
         )

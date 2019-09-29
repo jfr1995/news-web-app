@@ -50,15 +50,16 @@ class SignInGoogleBase extends Component {
     event.preventDefault();
   }; // end of on Submit
 
-  render() {
-    const { error } = this.state;
+  toggleOpen = () => {
+    this.setState({ open: !this.state.open });
+  };
 
+  render() {
     return (
       <form onSubmit={this.onSubmit}>
         <GoogleButton variant="contained" size="large" type="submit">
           <i className="fab fa-google fa-2x"></i>
         </GoogleButton>
-        {error && <p>{error.message}</p>}
       </form>
     );
   } // end of render

@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { styled } from "@material-ui/styles";
 import FormControl from "@material-ui/core/FormControl";
-
+import Fade from "@material-ui/core/Fade";
 const FormContainerGrid = styled(Grid)({
   flexDirection: "row",
   justifyContent: "center",
@@ -83,7 +83,7 @@ const PasswordForgetForm = withFirebase(PasswordForgetFormBase);
 const pageStyles = makeStyles(theme => ({
   test: {
     flexDirection: "column",
-
+    marginTop: "20vh",
     alignItems: "center"
   },
   text: {
@@ -96,17 +96,19 @@ const pageStyles = makeStyles(theme => ({
 const PasswordForgetPage = () => {
   const classes = pageStyles();
   return (
-    <Grid className={classes.test} container>
-      <Grid item>
-        <Typography className={classes.text} variant="h4">
-          password reset
-        </Typography>
-      </Grid>
+    <Fade in={true} timeout={500}>
+      <Grid className={classes.test} container>
+        <Grid item>
+          <Typography className={classes.text} variant="h4">
+            password reset
+          </Typography>
+        </Grid>
 
-      <Grid item>
-        <PasswordForgetForm />
+        <Grid item>
+          <PasswordForgetForm />
+        </Grid>
       </Grid>
-    </Grid>
+    </Fade>
   );
 };
 

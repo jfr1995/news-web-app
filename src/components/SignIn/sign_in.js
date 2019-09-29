@@ -13,9 +13,8 @@ import Fade from "@material-ui/core/Fade";
 const gridStyles = makeStyles(theme => ({
   grid: {
     flexDirection: "column",
-
     maxWidth: "40%",
-    margin: "30px auto"
+    margin: "20vh auto"
   },
   grid2: {
     justifyContent: "center"
