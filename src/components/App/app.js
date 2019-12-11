@@ -23,7 +23,6 @@ const App = () => {
     <div>
       <Router>
         <Navigation />
-
         <Route path={ROUTES.SIGN_IN} component={SignInPage} />
         <Route exact path={ROUTES.LANDING} component={Landing} />
         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />

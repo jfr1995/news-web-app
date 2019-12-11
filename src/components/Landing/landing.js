@@ -1,4 +1,11 @@
 import React from "react";
+import { styled } from "@material-ui/styles";
+import { Button } from "@material-ui/core";
+
+const LandingButton = styled(Button)({
+  margin: "50px",
+  backgroundColor: "red"
+});
 
 class Landing extends React.Component {
   constructor(props) {
@@ -9,7 +16,7 @@ class Landing extends React.Component {
   }
 
   render() {
-    return <div>test</div>;
+    return <div></div>;
   }
 }
 export default Landing;

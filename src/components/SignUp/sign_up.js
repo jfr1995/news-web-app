@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { compose } from "recompose";
-
+import Container from "@material-ui/core/Container";
 // HOC to provide firebase context
 import { withFirebase } from "../Firebase";
 // so we can change routes after sign in/out procedure
@@ -144,7 +144,9 @@ class SignUpFormBase extends Component {
     );
   }
 }
-
+const containerStyles = makeStyles(theme => ({
+  root: {}
+}));
 const linkStyles = makeStyles(theme => ({
   link: {
     textDecoration: "none",
@@ -172,17 +174,15 @@ const SignUpLink = () => {
   it has access to the props of the router. 
  
  */
-const SignUpForm = compose(
-  withRouter,
-  withFirebase
-)(SignUpFormBase);
+const SignUpForm = compose(withRouter, withFirebase)(SignUpFormBase);
 
 const SignUp = () => {
+  const classes = containerStyles();
   return (
-    <div>
+    <Container className={classes.root}>
       <h1>Sign Up page</h1>
       <SignUpForm />
-    </div>
+    </Container>
   );
 };
 
