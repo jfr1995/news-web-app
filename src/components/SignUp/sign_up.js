@@ -10,6 +10,7 @@ import * as ROLES from "../../constants /roles";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/styles";
 import indogo from "@material-ui/core/colors/indigo";
+import FormControl from "@material-ui/core/FormControl";
 
 const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
 const ERROR_MSG_ACCOUNT_EXISTS = `
@@ -97,7 +98,7 @@ class SignUpFormBase extends Component {
       username === "";
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <FormControl onSubmit={this.onSubmit}>
         <input
           name="username"
           value={username}
@@ -140,7 +141,7 @@ class SignUpFormBase extends Component {
         </button>
 
         {error && <p> {error.message}</p>}
-      </form>
+      </FormControl>
     );
   }
 }
