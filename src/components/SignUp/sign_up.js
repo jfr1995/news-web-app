@@ -145,7 +145,18 @@ class SignUpFormBase extends Component {
   }
 }
 const containerStyles = makeStyles(theme => ({
-  root: {}
+  root: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    marginTop: "40px",
+    height: "500px",
+    border: "2px solid red"
+  },
+  header: {
+    margin: "50px",
+    textTransform: "uppercase"
+  }
 }));
 const linkStyles = makeStyles(theme => ({
   link: {
@@ -180,7 +191,7 @@ const SignUp = () => {
   const classes = containerStyles();
   return (
     <Container className={classes.root}>
-      <h1>Sign Up page</h1>
+      <h1 className={classes.header}>Sign Up page</h1>
       <SignUpForm />
     </Container>
   );
