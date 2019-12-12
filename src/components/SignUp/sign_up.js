@@ -10,7 +10,11 @@ import * as ROLES from "../../constants /roles";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/styles";
 import indogo from "@material-ui/core/colors/indigo";
-import FormControl from "@material-ui/core/FormControl";
+import MyForm from "./sign_up_controls";
+import TextField from "@material-ui/core/TextField";
+import Checkbox from "@material-ui/core/Checkbox";
+import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
 
 const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
 const ERROR_MSG_ACCOUNT_EXISTS = `
@@ -98,50 +102,54 @@ class SignUpFormBase extends Component {
       username === "";
 
     return (
-      <FormControl onSubmit={this.onSubmit}>
-        <input
-          name="username"
-          value={username}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Full Name"
-        />
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="passwordOne"
-          value={passwordOne}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <input
-          name="passwordTwo"
-          value={passwordTwo}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Confirm Password"
-        />
-        <label>
-          Admin:
-          <input
-            name="isAdmin"
-            type="checkbox"
-            checked={isAdmin}
-            onChange={this.onChangeCheckBox}
+      <MyForm onSubmit={this.onSubmit}>
+        <Grid container spacing={3}>
+          <TextField
+            name="username"
+            value={username}
+            onChange={this.onChange}
+            type="text"
+            label="Full Name"
           />
-        </label>
-        <button disabled={isInvalid} type="submit">
-          Sign Up
-        </button>
+          <TextField
+            name="email"
+            value={email}
+            onChange={this.onChange}
+            type="text"
+            label="Email Address"
+          />
+          <div>
+            <TextField
+              name="passwordOne"
+              value={passwordOne}
+              onChange={this.onChange}
+              type="password"
+              label="Password"
+            />
+            <TextField
+              name="passwordTwo"
+              value={passwordTwo}
+              onChange={this.onChange}
+              type="password"
+              label="Confirm Password"
+            />
+            <label>
+              Admin:
+              <Checkbox
+                name="isAdmin"
+                type="checkbox"
+                checked={isAdmin}
+                onChange={this.onChangeCheckBox}
+              />
+            </label>
+          </div>
+          <Button disabled={isInvalid} type="submit">
+            Sign Up
+          </Button>
 
-        {error && <p> {error.message}</p>}
-      </FormControl>
+          {error && <p> {error.message}</p>}
+        </Grid>
+      </MyForm>
     );
   }
 }
