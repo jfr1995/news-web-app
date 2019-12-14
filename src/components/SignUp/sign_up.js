@@ -2,19 +2,16 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { compose } from "recompose";
 import Container from "@material-ui/core/Container";
-// HOC to provide firebase context
 import { withFirebase } from "../Firebase";
-// so we can change routes after sign in/out procedure
 import * as ROUTES from "../../constants /routes";
 import * as ROLES from "../../constants /roles";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/styles";
 import indogo from "@material-ui/core/colors/indigo";
-import MyForm from "./sign_up_controls";
 import TextField from "@material-ui/core/TextField";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
+import SignUpTextField from "./sign_up.styles";
 
 const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
 const ERROR_MSG_ACCOUNT_EXISTS = `
@@ -102,54 +99,58 @@ class SignUpFormBase extends Component {
       username === "";
 
     return (
-      <MyForm onSubmit={this.onSubmit}>
-        <Grid container spacing={3}>
-          <TextField
+      <form onSubmit={this.onSubmit}>
+        <div className="target">
+          <SignUpTextField
             name="username"
             value={username}
             onChange={this.onChange}
             type="text"
             label="Full Name"
           />
-          <TextField
+
+          <SignUpTextField
             name="email"
             value={email}
             onChange={this.onChange}
             type="text"
             label="Email Address"
           />
-          <div>
-            <TextField
-              name="passwordOne"
-              value={passwordOne}
-              onChange={this.onChange}
-              type="password"
-              label="Password"
-            />
-            <TextField
-              name="passwordTwo"
-              value={passwordTwo}
-              onChange={this.onChange}
-              type="password"
-              label="Confirm Password"
-            />
-            <label>
-              Admin:
-              <Checkbox
-                name="isAdmin"
-                type="checkbox"
-                checked={isAdmin}
-                onChange={this.onChangeCheckBox}
-              />
-            </label>
-          </div>
-          <Button disabled={isInvalid} type="submit">
-            Sign Up
-          </Button>
+        </div>
+        <div>
+          <SignUpTextField
+            name="passwordOne"
+            value={passwordOne}
+            onChange={this.onChange}
+            type="password"
+            label="Password"
+          />
 
-          {error && <p> {error.message}</p>}
-        </Grid>
-      </MyForm>
+          <SignUpTextField
+            name="passwordTwo"
+            value={passwordTwo}
+            onChange={this.onChange}
+            type="password"
+            label="Confirm Password"
+          />
+        </div>
+        <div>
+          <label>
+            Admin:
+            <Checkbox
+              name="isAdmin"
+              type="checkbox"
+              checked={isAdmin}
+              onChange={this.onChangeCheckBox}
+            />
+          </label>
+        </div>
+        <Button disabled={isInvalid} type="submit">
+          Sign Up
+        </Button>
+
+        {error && <p> {error.message}</p>}
+      </form>
     );
   }
 }
@@ -209,3 +210,66 @@ const SignUp = () => {
 export default SignUp;
 
 export { SignUpForm, SignUpLink };
+
+/*
+
+
+  <MyForm onSubmit={this.onSubmit}>
+        <SignUpGrid container>
+          <Grid item>
+            <TextField
+              name="username"
+              value={username}
+              onChange={this.onChange}
+              type="text"
+              label="Full Name"
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              name="email"
+              value={email}
+              onChange={this.onChange}
+              type="text"
+              label="Email Address"
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              name="passwordOne"
+              value={passwordOne}
+              onChange={this.onChange}
+              type="password"
+              label="Password"
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              name="passwordTwo"
+              value={passwordTwo}
+              onChange={this.onChange}
+              type="password"
+              label="Confirm Password"
+            />
+          </Grid>
+          <Grid item>
+            <label>
+              Admin:
+              <Checkbox
+                name="isAdmin"
+                type="checkbox"
+                checked={isAdmin}
+                onChange={this.onChangeCheckBox}
+              />
+            </label>
+          </Grid>
+          <Grid item>
+            <Button disabled={isInvalid} type="submit">
+              Sign Up
+            </Button>
+          </Grid>
+          <Grid item>{error && <p> {error.message}</p>}</Grid>
+        </SignUpGrid>
+      </MyForm>
+
+*/
