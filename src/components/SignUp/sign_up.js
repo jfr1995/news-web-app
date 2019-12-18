@@ -8,10 +8,12 @@ import * as ROLES from "../../constants /roles";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/styles";
 import indogo from "@material-ui/core/colors/indigo";
+import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
-import SignUpTextField from "./sign_up.styles";
+import grey from "@material-ui/core/colors/grey";
 
 const ERROR_CODE_ACCOUNT_EXISTS = "auth/email-already-in-use";
 const ERROR_MSG_ACCOUNT_EXISTS = `
@@ -99,58 +101,74 @@ class SignUpFormBase extends Component {
       username === "";
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <div className="target">
-          <SignUpTextField
-            name="username"
-            value={username}
-            onChange={this.onChange}
-            type="text"
-            label="Full Name"
-          />
+      <Box boxShadow="" bgcolor={grey[200]} borderRadius="5px" p={5}>
+        <form onSubmit={this.onSubmit}>
+          <Grid spacing={2} direction="column" container>
+            <Grid item>
+              <TextField
+                name="username"
+                value={username}
+                onChange={this.onChange}
+                type="text"
+                label="Full Name"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item>
+              <TextField
+                name="email"
+                value={email}
+                onChange={this.onChange}
+                type="text"
+                label="Email Address"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item>
+              <TextField
+                name="passwordOne"
+                value={passwordOne}
+                onChange={this.onChange}
+                type="password"
+                label="Password"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item>
+              <TextField
+                bgcolor="primary"
+                name="passwordTwo"
+                value={passwordTwo}
+                onChange={this.onChange}
+                type="password"
+                label="Confirm Password"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item>
+              <label id="checkbox-container">
+                Admin:
+                <Checkbox
+                  color="primary"
+                  name="isAdmin"
+                  type="checkbox"
+                  checked={isAdmin}
+                  onChange={this.onChangeCheckBox}
+                />
+              </label>
+            </Grid>
 
-          <SignUpTextField
-            name="email"
-            value={email}
-            onChange={this.onChange}
-            type="text"
-            label="Email Address"
-          />
-        </div>
-        <div>
-          <SignUpTextField
-            name="passwordOne"
-            value={passwordOne}
-            onChange={this.onChange}
-            type="password"
-            label="Password"
-          />
-
-          <SignUpTextField
-            name="passwordTwo"
-            value={passwordTwo}
-            onChange={this.onChange}
-            type="password"
-            label="Confirm Password"
-          />
-        </div>
-        <div>
-          <label>
-            Admin:
-            <Checkbox
-              name="isAdmin"
-              type="checkbox"
-              checked={isAdmin}
-              onChange={this.onChangeCheckBox}
-            />
-          </label>
-        </div>
-        <Button disabled={isInvalid} type="submit">
-          Sign Up
-        </Button>
-
-        {error && <p> {error.message}</p>}
-      </form>
+            <Button
+              size="large"
+              variant="contained"
+              disabled={isInvalid}
+              type="submit"
+            >
+              Sign Up
+            </Button>
+          </Grid>
+        </form>
+      </Box>
     );
   }
 }
@@ -160,8 +178,7 @@ const containerStyles = makeStyles(theme => ({
     flexDirection: "column",
     alignItems: "center",
     marginTop: "40px",
-    height: "500px",
-    border: "2px solid red"
+    height: "500px"
   },
   header: {
     margin: "50px",
@@ -201,7 +218,7 @@ const SignUp = () => {
   const classes = containerStyles();
   return (
     <Container className={classes.root}>
-      <h1 className={classes.header}>Sign Up page</h1>
+      <h1 className={classes.header}>Sign Up</h1>
       <SignUpForm />
     </Container>
   );
@@ -210,66 +227,3 @@ const SignUp = () => {
 export default SignUp;
 
 export { SignUpForm, SignUpLink };
-
-/*
-
-
-  <MyForm onSubmit={this.onSubmit}>
-        <SignUpGrid container>
-          <Grid item>
-            <TextField
-              name="username"
-              value={username}
-              onChange={this.onChange}
-              type="text"
-              label="Full Name"
-            />
-          </Grid>
-          <Grid item>
-            <TextField
-              name="email"
-              value={email}
-              onChange={this.onChange}
-              type="text"
-              label="Email Address"
-            />
-          </Grid>
-          <Grid item>
-            <TextField
-              name="passwordOne"
-              value={passwordOne}
-              onChange={this.onChange}
-              type="password"
-              label="Password"
-            />
-          </Grid>
-          <Grid item>
-            <TextField
-              name="passwordTwo"
-              value={passwordTwo}
-              onChange={this.onChange}
-              type="password"
-              label="Confirm Password"
-            />
-          </Grid>
-          <Grid item>
-            <label>
-              Admin:
-              <Checkbox
-                name="isAdmin"
-                type="checkbox"
-                checked={isAdmin}
-                onChange={this.onChangeCheckBox}
-              />
-            </label>
-          </Grid>
-          <Grid item>
-            <Button disabled={isInvalid} type="submit">
-              Sign Up
-            </Button>
-          </Grid>
-          <Grid item>{error && <p> {error.message}</p>}</Grid>
-        </SignUpGrid>
-      </MyForm>
-
-*/
