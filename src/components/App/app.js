@@ -8,7 +8,6 @@ import Navigation from "../Navigation/navigation";
 import SignInPage from "../SignIn/sign_in";
 import SignUpPage from "../SignUp/sign_up";
 import PasswordForgetPage from "../PasswordForget/password_forget";
-import HomePage from "../Home/home";
 import AccountPage from "../Account/account";
 import AdminPage from "../Admin/admin";
 import TopHeadlines from "../Categories/TopHeadlines";
