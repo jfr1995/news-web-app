@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 import TextInfoCardContent from "@mui-treasury/components/cardContent/textInfo";
 import { useBlogCardContentStyles } from "@mui-treasury/styles/cardContent/blog";
 import { useOverShadowStyles } from "@mui-treasury/styles/shadow/over";
-import { createMuiTheme } from "@material-ui/core";
+import Moment from "moment";
 
 const useStyles = makeStyles(({ breakpoints, spacing }) => ({
   root: {
@@ -67,7 +67,13 @@ const useStyles = makeStyles(({ breakpoints, spacing }) => ({
   }
 }));
 
-const BlogCard = () => {
+const BlogCard = ({
+  date = "1",
+  title = "welcome",
+  description = "test",
+  url = "test.com",
+  imageURL = "test"
+}) => {
   const styles = useStyles();
   const {
     button: buttonStyles,
@@ -76,22 +82,15 @@ const BlogCard = () => {
   const shadowStyles = useOverShadowStyles();
   return (
     <Card className={cx(styles.root, shadowStyles.root)}>
-      <CardMedia
-        className={styles.media}
-        image={
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Git_icon.svg/2000px-Git_icon.svg.png"
-        }
-      />
+      <CardMedia className={styles.media} image={imageURL} />
       <CardContent>
         <TextInfoCardContent
           classes={cardContentStyles}
-          overline={"28 MAR 2019"}
-          heading={"What is Git ?"}
-          body={
-            "Git is a distributed version control system. Every dev has a working copy of the code and..."
-          }
+          overline={title}
+          heading={Moment(date).fromNow()}
+          body={description}
         />
-        <Button className={buttonStyles}>Read more</Button>
+        <Button>Read more</Button>
       </CardContent>
     </Card>
   );

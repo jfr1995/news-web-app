@@ -27,6 +27,9 @@ class LandingBase extends React.Component {
           articles: [...]
         }
       */
+      })
+      .catch(error => {
+        this.setState({ error });
       });
   }
   render() {
