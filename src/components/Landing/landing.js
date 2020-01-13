@@ -3,6 +3,8 @@ import Box from "@material-ui/core/Box";
 import { withNews } from "../News/context";
 import { compose } from "recompose";
 import Feed from "../Feed/Feed";
+import Menu from "../Menu/Menu";
+import Grid from "@material-ui/core/Grid";
 
 class LandingBase extends React.Component {
   constructor(props) {
@@ -34,7 +36,18 @@ class LandingBase extends React.Component {
   }
   render() {
     if (this.state.list.length !== 0) {
-      return <Feed articles={this.state.list}></Feed>;
+      return (
+        <Grid container justify="space-around">
+          <Grid item>
+            {" "}
+            <Menu />
+          </Grid>
+          <Grid item>
+            {" "}
+            <Feed articles={this.state.list} />
+          </Grid>
+        </Grid>
+      );
     } else {
       // replace with loading animation
       return <Box mt={8}>No stories</Box>;
@@ -50,4 +63,5 @@ export const SignInFacebook = compose(
   withRouter,
   withFirebase
 )(SignInFacebookBase);
+<Feed articles={this.state.list}></Feed>
 */
