@@ -37,12 +37,12 @@ class LandingBase extends React.Component {
   render() {
     if (this.state.list.length !== 0) {
       return (
-        <Grid container justify="space-around">
-          <Grid item>
+        <Grid spacing={0} container>
+          <Grid item xs={3}>
             {" "}
             <Menu />
           </Grid>
-          <Grid item>
+          <Grid item xs={9}>
             {" "}
             <Feed articles={this.state.list} />
           </Grid>
