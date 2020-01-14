@@ -56,7 +56,7 @@ export default props => {
       >
         <Toolbar>
           <IconButton
-            color="secondary"
+            color="inherit"
             onClick={handleDrawerOpen}
             className={clsx(classes.menuButton, open && classes.hide)}
           >

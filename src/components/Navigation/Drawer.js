@@ -18,6 +18,9 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(0, 1),
     ...theme.mixins.toolbar,
     justifyContent: "flex-end"
+  },
+  drawerPaper: {
+    width: drawerWidth
   }
 }));
 
@@ -29,6 +32,9 @@ export default ({ isOpen, handleClose }) => {
       variant="persistent"
       anchor="left"
       open={isOpen}
+      classes={{
+        paper: classes.drawerPaper
+      }}
     >
       <div className={classes.drawerHeader}>
         <IconButton onClick={handleClose}>
