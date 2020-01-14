@@ -1,4 +1,4 @@
-// Logic imports
+// conditional rendering for authenticated and non-authenticated user navigation bar
 import React from "react";
 import { AuthUserContext } from "../Session/session";
 import NavigationAuth from "./navigationAuth";
