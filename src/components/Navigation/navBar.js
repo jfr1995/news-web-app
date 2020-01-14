@@ -1,11 +1,12 @@
 import React from "react";
+import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import Drawer from "@material-ui/core/Drawer";
+import MenuIcon from "@material-ui/icons/Menu";
+import Typography from "@material-ui/core/Typography";
 
 const drawerWidth = 300;
 const useStyles = makeStyles(theme => ({
@@ -28,7 +29,9 @@ const useStyles = makeStyles(theme => ({
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen
     })
-  }
+  },
+  menuButton: { marginRight: theme.spacing(2) },
+  hide: { display: "none" }
 }));
 
 export default props => {
@@ -51,7 +54,16 @@ export default props => {
         className={clsx(classes.appBar, { [classes.appBarShift]: open })}
       >
         <Toolbar>
-          <IconButton />
+          <IconButton
+            color="secondary"
+            onClick={handleDrawerOpen}
+            className={clsx(classes.menuButton, open && classes.hide)}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" noWrap>
+            Menu Title
+          </Typography>
         </Toolbar>
       </AppBar>
     </div>
