@@ -7,6 +7,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
+import PersistentDrawer from "./Drawer";
 
 const drawerWidth = 300;
 const useStyles = makeStyles(theme => ({
@@ -66,6 +67,7 @@ export default props => {
           </Typography>
         </Toolbar>
       </AppBar>
+      <PersistentDrawer isOpen={open} handleClose={handleDrawerClose} />
     </div>
   );
 };
