@@ -22,11 +22,6 @@ const NavNonAuthItems = () => {
   const classes = useStyles();
   return (
     <React.Fragment>
-      <Link to={ROUTES.LANDING} className={classes.link}>
-        <Button size="large" variant="text" className={classes.btn}>
-          About
-        </Button>
-      </Link>
       <Typography className={classes.root}>&nbsp;</Typography>
       <Link to={ROUTES.SIGN_IN} className={classes.link} replace>
         <Button size="large" variant="text" className={classes.btn}>

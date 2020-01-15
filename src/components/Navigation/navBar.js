@@ -8,6 +8,12 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
 import PersistentDrawer from "./Drawer";
+import Dialog from "@material-ui/core/Dialog";
+import Fab from "@material-ui/core/Fab";
+import Settings from "@material-ui/icons/Settings";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import { Link } from "react-router-dom";
+import * as ROUTES from "../../constants /routes";
 
 const drawerWidth = 300;
 const useStyles = makeStyles(theme => ({
@@ -32,19 +38,34 @@ const useStyles = makeStyles(theme => ({
     })
   },
   menuButton: { marginRight: theme.spacing(2) },
-  hide: { display: "none" }
+  hide: { display: "none" },
+  title: {
+    flexGrow: 1,
+    color: "inherit",
+    textDecoration: "none",
+    textTransform: "uppercase"
+  }
 }));
 
 export default props => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const [dialogOpen, setDialogOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
-    setOpen(true);
+    setDrawerOpen(true);
   };
 
   const handleDrawerClose = () => {
-    setOpen(false);
+    setDrawerOpen(false);
+  };
+
+  const handleDialogOpen = () => {
+    setDialogOpen(true);
+  };
+
+  const handleDialogClose = () => {
+    setDialogOpen(false);
   };
 
   return (
@@ -52,22 +73,31 @@ export default props => {
       <CssBaseline />
       <AppBar
         position="fixed"
-        className={clsx(classes.appBar, { [classes.appBarShift]: open })}
+        className={clsx(classes.appBar, { [classes.appBarShift]: drawerOpen })}
       >
         <Toolbar>
           <IconButton
             color="inherit"
             onClick={handleDrawerOpen}
-            className={clsx(classes.menuButton, open && classes.hide)}
+            className={clsx(classes.menuButton, drawerOpen && classes.hide)}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            Menu Title
-          </Typography>
+          <Link to={ROUTES.LANDING} className={classes.title}>
+            <Typography variant="h6" noWrap>
+              Home
+            </Typography>
+          </Link>
+
+          <Fab>
+            <Settings onClick={handleDialogOpen} />
+          </Fab>
+          <Dialog open={dialogOpen} onClose={handleDialogClose}>
+            <DialogTitle>Test</DialogTitle>
+          </Dialog>
         </Toolbar>
       </AppBar>
-      <PersistentDrawer isOpen={open} handleClose={handleDrawerClose} />
+      <PersistentDrawer isOpen={drawerOpen} handleClose={handleDrawerClose} />
     </div>
   );
 };

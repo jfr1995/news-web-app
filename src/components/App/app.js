@@ -10,10 +10,7 @@ import SignUpPage from "../SignUp/sign_up";
 import PasswordForgetPage from "../PasswordForget/password_forget";
 import AccountPage from "../Account/account";
 import AdminPage from "../Admin/admin";
-import TopHeadlines from "../Categories/TopHeadlines";
 import Landing from "../Landing/landing";
-
-import Technology from "../Categories/Technology";
 
 // include styling
 
@@ -28,12 +25,6 @@ const App = () => {
         <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
         <Route path={ROUTES.ACCOUNT} component={AccountPage} />
         <Route path={ROUTES.ADMIN} component={AdminPage} />
-        <Route path={ROUTES.TOP_HEADLINES} component={TopHeadlines} />
-        <Route path={ROUTES.TECHNOLOGY} component={Technology} />
-        <Route path={ROUTES.BUSINESS} component={TopHeadlines} />
-        <Route path={ROUTES.SCIENCE} component={TopHeadlines} />
-        <Route path={ROUTES.SPORTS} component={TopHeadlines} />
-        <Route path={ROUTES.ENTERTAINMNENT} component={TopHeadlines} />
       </Router>
     </div>
   );

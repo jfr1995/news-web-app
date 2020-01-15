@@ -90,7 +90,9 @@ const BlogCard = ({
           heading={Moment(date).fromNow()}
           body={description}
         />
-        <Button>Read more</Button>
+        <Button color="primary" variant="contained">
+          Read more
+        </Button>
       </CardContent>
     </Card>
   );
