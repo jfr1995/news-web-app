@@ -7,7 +7,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
-import PersistentDrawer from "./Drawer";
+import PersistentDrawer from "./Assets/Drawer";
 import Dialog from "@material-ui/core/Dialog";
 import Fab from "@material-ui/core/Fab";
 import Settings from "@material-ui/icons/Settings";
@@ -104,7 +104,7 @@ export default props => {
           >
             <DialogTitle>Test</DialogTitle>
             <DialogContent>
-              <form />
+              <form></form>
             </DialogContent>
           </Dialog>
         </Toolbar>

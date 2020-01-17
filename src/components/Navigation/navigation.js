@@ -4,6 +4,7 @@ import { AuthUserContext } from "../Session/session";
 import NavigationAuth from "./navigationAuth";
 import NavBar from "./navBar";
 import NavNonAuthItems from "./navNonAuthItems";
+import test from "./Test/TestNav";
 
 const Navigation = () => {
   return (
@@ -12,7 +13,7 @@ const Navigation = () => {
         authUser ? (
           <NavigationAuth authUser={authUser} />
         ) : (
-          <NavBar authUser={authUser}>
+          <NavBar>
             <NavNonAuthItems />
           </NavBar>
         )
