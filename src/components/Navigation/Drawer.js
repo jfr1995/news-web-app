@@ -46,6 +46,21 @@ export default ({ isOpen, handleClose }) => {
         <ListItem button>
           <ListItemText primary="test"></ListItemText>
         </ListItem>
+        <ListItem button>
+          <ListItemText primary="test"></ListItemText>
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="test"></ListItemText>
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="test"></ListItemText>
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="test"></ListItemText>
+        </ListItem>
+        <ListItem button>
+          <ListItemText primary="test"></ListItemText>
+        </ListItem>
       </List>
     </Drawer>
   );

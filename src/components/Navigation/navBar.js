@@ -14,6 +14,7 @@ import Settings from "@material-ui/icons/Settings";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants /routes";
+import { DialogContent } from "@material-ui/core";
 
 const drawerWidth = 300;
 const useStyles = makeStyles(theme => ({
@@ -44,6 +45,10 @@ const useStyles = makeStyles(theme => ({
     color: "inherit",
     textDecoration: "none",
     textTransform: "uppercase"
+  },
+  Paper: {
+    minWidth: 500,
+    height: 650
   }
 }));
 
@@ -89,11 +94,18 @@ export default props => {
             </Typography>
           </Link>
 
-          <Fab>
-            <Settings onClick={handleDialogOpen} />
+          <Fab onClick={handleDialogOpen}>
+            <Settings />
           </Fab>
-          <Dialog open={dialogOpen} onClose={handleDialogClose}>
+          <Dialog
+            classes={{ paper: classes.Paper }}
+            open={dialogOpen}
+            onClose={handleDialogClose}
+          >
             <DialogTitle>Test</DialogTitle>
+            <DialogContent>
+              <form />
+            </DialogContent>
           </Dialog>
         </Toolbar>
       </AppBar>
