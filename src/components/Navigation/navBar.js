@@ -1,6 +1,5 @@
 import React from "react";
 import clsx from "clsx";
-import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -14,7 +13,7 @@ import Settings from "@material-ui/icons/Settings";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../constants /routes";
-import { DialogContent } from "@material-ui/core";
+import { DialogContent, makeStyles } from "@material-ui/core";
 
 const drawerWidth = 300;
 const useStyles = makeStyles(theme => ({

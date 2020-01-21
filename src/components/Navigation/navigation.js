@@ -4,19 +4,13 @@ import { AuthUserContext } from "../Session/session";
 import NavigationAuth from "./navigationAuth";
 import NavBar from "./navBar";
 import NavNonAuthItems from "./navNonAuthItems";
-import test from "./Test/TestNav";
+import Test from "./Test/TestNav";
 
 const Navigation = () => {
   return (
     <AuthUserContext.Consumer>
       {authUser =>
-        authUser ? (
-          <NavigationAuth authUser={authUser} />
-        ) : (
-          <NavBar>
-            <NavNonAuthItems />
-          </NavBar>
-        )
+        authUser ? <NavigationAuth authUser={authUser} /> : <NavBar />
       }
     </AuthUserContext.Consumer>
   );
