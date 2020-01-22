@@ -17,10 +17,9 @@ import { DialogContent, makeStyles } from "@material-ui/core";
 import useStyles from "./TestNav.styles";
 import { withStyles } from "@material-ui/styles";
 
-const style = {
+export default withStyles(({ theme }) => ({
   root: {}
-};
-export default withStyles(style)(
+}))(
   class extends Component {
     constructor(props) {
       super(props);
