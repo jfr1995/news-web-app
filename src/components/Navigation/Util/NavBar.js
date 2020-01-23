@@ -6,7 +6,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import Typography from "@material-ui/core/Typography";
-import PersistentDrawer from "../Assets/Drawer";
+import PersistentDrawer from "./Drawer";
 import Dialog from "@material-ui/core/Dialog";
 import Fab from "@material-ui/core/Fab";
 import Settings from "@material-ui/icons/Settings";
@@ -14,7 +14,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../../constants /routes";
 import { withStyles } from "@material-ui/core";
-import useStyles from "./TestNav.styles";
+import useStyles from "./NavBar.styles";
 
 export default withStyles(useStyles)(
   class extends Component {
