@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default ({ isOpen, handleClose }) => {
+export default ({ isOpen, onClose }) => {
   const classes = useStyles();
   return (
     <Drawer
@@ -37,7 +37,7 @@ export default ({ isOpen, handleClose }) => {
       }}
     >
       <div className={classes.drawerHeader}>
-        <IconButton onClick={handleClose}>
+        <IconButton onClick={onClose}>
           <ChevronLeftIcon />
         </IconButton>
       </div>

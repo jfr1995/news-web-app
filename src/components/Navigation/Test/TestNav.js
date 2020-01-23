@@ -24,31 +24,22 @@ export default withStyles(useStyles)(
         drawerOpen: false,
         dialogOpen: false
       };
-      this.setDrawerOpen = this.setDrawerOpen.bind(this);
-      this.handleDrawerClose = this.handleDrawerClose.bind(this);
-      this.setDialogOpen = this.setDialogOpen.bind(this);
-      this.handleDialogClose = this.handleDialogClose.bind(this);
+      this.toggleDrawer = this.toggleDrawer.bind(this);
+      this.toggleDialog = this.toggleDialog.bind(this);
     }
-    handleDialogClose = () => {
-      this.setState({ dialogOpen: false });
-    };
-    handleDrawerClose = () => {
-      this.setState({ drawerOpen: false });
-    };
-    setDrawerOpen = () => {
+
+    toggleDrawer = () => {
       const { drawerOpen } = this.state;
       this.setState({
         drawerOpen: !drawerOpen
       });
     };
-
-    setDialogOpen = () => {
+    toggleDialog = () => {
       const { dialogOpen } = this.state;
       this.setState({
         dialogOpen: !dialogOpen
       });
     };
-
     render() {
       const { drawerOpen, dialogOpen } = this.state;
 
@@ -65,7 +56,7 @@ export default withStyles(useStyles)(
             <Toolbar>
               <IconButton
                 color="inherit"
-                onClick={this.setDrawerOpen}
+                onClick={this.toggleDrawer}
                 className={clsx(classes.menuButton, drawerOpen && classes.hide)}
               >
                 <MenuIcon />
@@ -76,22 +67,19 @@ export default withStyles(useStyles)(
                 </Typography>
               </Link>
 
-              <Fab onClick={this.setDialogOpen}>
+              <Fab onClick={this.toggleDialog}>
                 <Settings />
               </Fab>
               <Dialog
                 classes={{ paper: classes.Paper }}
                 open={dialogOpen}
-                onClose={this.handleDialogClose}
+                onClose={this.toggleDialog}
               >
                 <DialogTitle>With Auth</DialogTitle>
               </Dialog>
             </Toolbar>
           </AppBar>
-          <PersistentDrawer
-            isOpen={drawerOpen}
-            onClose={this.handleDrawerClose}
-          />
+          <PersistentDrawer isOpen={drawerOpen} onClose={this.toggleDrawer} />
         </div>
       );
     }
