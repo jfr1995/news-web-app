@@ -13,13 +13,10 @@ import Settings from "@material-ui/icons/Settings";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../../constants /routes";
-import { DialogContent, makeStyles } from "@material-ui/core";
+import { withStyles } from "@material-ui/core";
 import useStyles from "./TestNav.styles";
-import { withStyles } from "@material-ui/styles";
 
-export default withStyles(({ theme }) => ({
-  root: {}
-}))(
+export default withStyles(useStyles)(
   class extends Component {
     constructor(props) {
       super(props);
