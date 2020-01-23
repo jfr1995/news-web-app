@@ -1,15 +1,13 @@
 // conditional rendering for authenticated and non-authenticated user navigation bar
 import React from "react";
-import { AuthUserContext } from "../Session/session";
 import NavBar from "./Util/NavBar";
+import { topics } from "../../constants /constants";
+import { AuthUserContext } from "../Session/session";
 
 const Navigation = () => {
   return (
     <AuthUserContext.Consumer>
-      {authUser => (
-        //authUser ? <NavigationAuth authUser={authUser} /> : <Test />
-        <NavBar authUser={authUser} />
-      )}
+      {authUser => <NavBar authUser={authUser} topics={topics} />}
     </AuthUserContext.Consumer>
   );
 };

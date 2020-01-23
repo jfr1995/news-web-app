@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default ({ isOpen, onClose }) => {
+export default ({ isOpen, onClose, topics }) => {
   const classes = useStyles();
   return (
     <Drawer
@@ -43,24 +43,13 @@ export default ({ isOpen, onClose }) => {
       </div>
       <Divider />
       <List>
-        <ListItem button>
-          <ListItemText primary="test"></ListItemText>
-        </ListItem>
-        <ListItem button>
-          <ListItemText primary="test"></ListItemText>
-        </ListItem>
-        <ListItem button>
-          <ListItemText primary="test"></ListItemText>
-        </ListItem>
-        <ListItem button>
-          <ListItemText primary="test"></ListItemText>
-        </ListItem>
-        <ListItem button>
-          <ListItemText primary="test"></ListItemText>
-        </ListItem>
-        <ListItem button>
-          <ListItemText primary="test"></ListItemText>
-        </ListItem>
+        {topics.map(topic => {
+          return (
+            <ListItem button>
+              <ListItemText primary={topic}></ListItemText>
+            </ListItem>
+          );
+        })}
       </List>
     </Drawer>
   );

@@ -10,7 +10,6 @@ import PersistentDrawer from "./Drawer";
 import Dialog from "@material-ui/core/Dialog";
 import Fab from "@material-ui/core/Fab";
 import Settings from "@material-ui/icons/Settings";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../../constants /routes";
 import { withStyles } from "@material-ui/core";
@@ -43,7 +42,7 @@ export default withStyles(useStyles)(
     render() {
       const { drawerOpen, dialogOpen } = this.state;
 
-      const { authUser, classes } = this.props;
+      const { authUser, classes, topics } = this.props;
       return (
         <div className={classes.root}>
           <CssBaseline />
@@ -75,11 +74,15 @@ export default withStyles(useStyles)(
                 open={dialogOpen}
                 onClose={this.toggleDialog}
               >
-                <DialogTitle>With Auth</DialogTitle>
+                {authUser ? <div /> : <div />}
               </Dialog>
             </Toolbar>
           </AppBar>
-          <PersistentDrawer isOpen={drawerOpen} onClose={this.toggleDrawer} />
+          <PersistentDrawer
+            isOpen={drawerOpen}
+            onClose={this.toggleDrawer}
+            topics={topics}
+          />
         </div>
       );
     }
