@@ -10,6 +10,7 @@ import PersistentDrawer from "./Drawer";
 import Dialog from "@material-ui/core/Dialog";
 import Fab from "@material-ui/core/Fab";
 import Settings from "@material-ui/icons/Settings";
+import DialogNonAuth from "./DialogNonAuth";
 import { Link } from "react-router-dom";
 import * as ROUTES from "../../../constants /routes";
 import { withStyles } from "@material-ui/core";
@@ -74,7 +75,7 @@ export default withStyles(useStyles)(
                 open={dialogOpen}
                 onClose={this.toggleDialog}
               >
-                {authUser ? <div /> : <div />}
+                {authUser ? <div /> : <DialogNonAuth />}
               </Dialog>
             </Toolbar>
           </AppBar>

@@ -80,7 +80,7 @@ export default ({ isOpen, onClose, topics }) => {
       <List>
         {topics.map(topic => {
           return (
-            <ListItem button>
+            <ListItem button onClick={() => console.log("test")}>
               <ListItemIcon>{getIcons(topic)}</ListItemIcon>
               <ListItemText primary={topic}></ListItemText>
             </ListItem>
