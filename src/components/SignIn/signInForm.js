@@ -3,12 +3,6 @@ import { withRouter } from "react-router-dom";
 import { withFirebase } from "../Firebase/index";
 import { compose } from "recompose";
 import * as ROUTES from "../../constants /routes";
-import TextField from "@material-ui/core/TextField";
-import { styled } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import Grid from "@material-ui/core/Grid";
-
-import FormControl from "@material-ui/core/FormControl";
 
 const INITIAL_STATE = {
   email: "",
@@ -16,24 +10,24 @@ const INITIAL_STATE = {
   error: null
 };
 
-const ContainerGrid = styled(Grid)({
-  flexDirection: "column",
-  alignContent: "center",
-  width: "100%"
-});
+// const ContainerGrid = styled(Grid)({
+//   flexDirection: "column",
+//   alignContent: "center",
+//   width: "100%"
+// });
 
-const ItemGrid = styled(Grid)({
-  width: "100%"
-});
+// const ItemGrid = styled(Grid)({
+//   width: "100%"
+// });
 
-const SignInTextField = styled(TextField)({
-  width: "100%"
-});
+// const SignInTextField = styled(TextField)({
+//   width: "100%"
+// });
 
-const SignInButton = styled(Button)({
-  width: "50%",
-  marginTop: "1rem"
-});
+// const SignInButton = styled(Button)({
+//   width: "50%",
+//   marginTop: "1rem"
+// });
 
 class SignInFormBase extends Component {
   constructor(props) {
@@ -65,50 +59,28 @@ class SignInFormBase extends Component {
     const isInvalid = password === "" || email === "";
 
     return (
-      <FormControl fullWidth={true} onSubmit={this.onSubmit}>
-        <ContainerGrid>
-          <ItemGrid item>
-            <SignInTextField
-              margin="normal"
-              variant="filled"
-              label="Email"
-              name="email"
-              value={email}
-              onChange={this.onChange}
-              type="text"
-              placeholder="Email Address"
-            />
-          </ItemGrid>
-          <ItemGrid item>
-            <SignInTextField
-              margin="normal"
-              variant="filled"
-              label="Password"
-              name="password"
-              value={password}
-              onChange={this.onChange}
-              type="password"
-              placeholder="Password"
-            />
-          </ItemGrid>
-          <ItemGrid align="center" item>
-            <SignInButton
-              color="primary"
-              size="large"
-              variant="contained"
-              disabled={isInvalid}
-              type="submit"
-            >
-              Login
-            </SignInButton>
-          </ItemGrid>
-        </ContainerGrid>
-      </FormControl>
+      <form onSubmit={this.onSubmit}>
+        <input
+          label="Email"
+          name="email"
+          value={email}
+          onChange={this.onChange}
+          type="text"
+          placeholder="Email Address"
+        />
+        <input
+          label="Password"
+          name="password"
+          value={password}
+          onChange={this.onChange}
+          type="password"
+          placeholder="Password"
+        />
+        <input disabled={isInvalid} type="submit" value="Login" />
+        Login
+      </form>
     );
   }
 }
 
-export const SignInForm = compose(
-  withRouter,
-  withFirebase
-)(SignInFormBase);
+export const SignInForm = compose(withRouter, withFirebase)(SignInFormBase);

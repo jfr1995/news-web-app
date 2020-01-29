@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from "react";
+import { SignInForm } from "../../SignIn/SignInForm";
 
 export default class extends Component {
   constructor(props) {
@@ -8,10 +9,6 @@ export default class extends Component {
 
   render() {
     const { toggle } = this.state;
-    return (
-      <Fragment>
-        {toggle ? <Fragment>Sign In</Fragment> : <Fragment>Sign Up</Fragment>}
-      </Fragment>
-    );
+    return <Fragment>{toggle ? <SignInForm /> : <SignInForm />}</Fragment>;
   }
 }
