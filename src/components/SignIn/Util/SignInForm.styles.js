@@ -6,8 +6,7 @@ const useStyles = theme => ({
     flexDirection: "column",
     width: "100%",
     height: "100%",
-    padding: "50px",
-    border: "1px solid red"
+    padding: "50px"
   },
   item: { width: "100%", margin: "10px" },
   itemForm: {
@@ -22,8 +21,20 @@ const useStyles = theme => ({
     minWidth: "100%"
   },
   itemBtn: {
-    minHeight: "100px",
-    minWidth: "100%"
+    minHeight: "50px",
+    width: "100%",
+    textTransform: "uppercase"
+  },
+  footer: {
+    backgroundColor: "#D1D1D1",
+    textAlign: "center",
+    padding: "20px"
+  },
+  span: {
+    color: theme.palette.primary.light,
+    "&:hover": {
+      cursor: "pointer"
+    }
   }
 });
 
