@@ -9,8 +9,22 @@ const useStyles = theme => ({
     padding: "50px",
     border: "1px solid red"
   },
-  itemBtn: { width: "100%", border: "1px solid black", margin: "10px" },
-  itemTitle: {}
+  item: { width: "100%", margin: "10px" },
+  itemForm: {
+    width: "100%",
+    margin: "10px",
+
+    display: "flex",
+    flexDirection: "column"
+  },
+  itemInput: {
+    minHeight: "100px",
+    minWidth: "100%"
+  },
+  itemBtn: {
+    minHeight: "100px",
+    minWidth: "100%"
+  }
 });
 
 export default useStyles;

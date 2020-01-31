@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import DialogTitle from "@material-ui/core/DialogTitle";
+import Typography from "@material-ui/core/Typography";
+import Divider from "@material-ui/core/Divider";
 import { SignInFacebook } from "./SignInFacebook";
 import { SignInGoogle } from "./SignInGoogle";
 import { withRouter } from "react-router-dom";
@@ -8,6 +9,7 @@ import { compose } from "recompose";
 import { withStyles } from "@material-ui/core";
 import * as ROUTES from "../../constants /routes";
 import useStyles from "./Util/SignInForm.styles";
+import TextField from "@material-ui/core/TextField";
 
 const INITIAL_STATE = {
   email: "",
@@ -46,32 +48,43 @@ class SignInFormBase extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <div className={classes.itemBtn}>
+        <div className={classes.item}>
+          <Typography variant="h3">Login</Typography>
+        </div>
+        <div className={classes.item}>
           <SignInGoogle />
         </div>
-        <div className={classes.itemBtn}>
+        <div className={classes.item}>
           <SignInFacebook />
         </div>
-
-        <DialogTitle>Login</DialogTitle>
-        <form onSubmit={this.onSubmit}>
-          <input
+        <br />
+        <Divider />
+        <br />
+        <form className={classes.itemForm} onSubmit={this.onSubmit}>
+          <TextField
             label="Email"
             name="email"
             value={email}
             onChange={this.onChange}
             type="text"
-            placeholder="Email Address"
+            className={classes.itemInput}
+            variant="outlined"
           />
-          <input
+          <TextField
             label="Password"
             name="password"
             value={password}
             onChange={this.onChange}
             type="password"
-            placeholder="Password"
+            className={classes.itemInput}
+            variant="outlined"
           />
-          <input disabled={isInvalid} type="submit" value="Login" />
+          <input
+            className={classes.itemInput}
+            disabled={isInvalid}
+            type="submit"
+            value="Login"
+          />
         </form>
       </div>
     );
