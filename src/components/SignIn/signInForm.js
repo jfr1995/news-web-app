@@ -1,33 +1,19 @@
 import React, { Component } from "react";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import { SignInFacebook } from "./SignInFacebook";
+import { SignInGoogle } from "./SignInGoogle";
 import { withRouter } from "react-router-dom";
 import { withFirebase } from "../Firebase/index";
 import { compose } from "recompose";
+import { withStyles } from "@material-ui/core";
 import * as ROUTES from "../../constants /routes";
+import useStyles from "./Util/SignInForm.styles";
 
 const INITIAL_STATE = {
   email: "",
   password: "",
   error: null
 };
-
-// const ContainerGrid = styled(Grid)({
-//   flexDirection: "column",
-//   alignContent: "center",
-//   width: "100%"
-// });
-
-// const ItemGrid = styled(Grid)({
-//   width: "100%"
-// });
-
-// const SignInTextField = styled(TextField)({
-//   width: "100%"
-// });
-
-// const SignInButton = styled(Button)({
-//   width: "50%",
-//   marginTop: "1rem"
-// });
 
 class SignInFormBase extends Component {
   constructor(props) {
@@ -57,30 +43,43 @@ class SignInFormBase extends Component {
   render() {
     const { email, password, error } = this.state;
     const isInvalid = password === "" || email === "";
-
+    const { classes } = this.props;
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          label="Email"
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          label="Password"
-          name="password"
-          value={password}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <input disabled={isInvalid} type="submit" value="Login" />
-        Login
-      </form>
+      <div className={classes.root}>
+        <div className={classes.itemBtn}>
+          <SignInGoogle />
+        </div>
+        <div className={classes.itemBtn}>
+          <SignInFacebook />
+        </div>
+
+        <DialogTitle>Login</DialogTitle>
+        <form onSubmit={this.onSubmit}>
+          <input
+            label="Email"
+            name="email"
+            value={email}
+            onChange={this.onChange}
+            type="text"
+            placeholder="Email Address"
+          />
+          <input
+            label="Password"
+            name="password"
+            value={password}
+            onChange={this.onChange}
+            type="password"
+            placeholder="Password"
+          />
+          <input disabled={isInvalid} type="submit" value="Login" />
+        </form>
+      </div>
     );
   }
 }
 
-export const SignInForm = compose(withRouter, withFirebase)(SignInFormBase);
+export const SignInForm = compose(
+  withStyles(useStyles),
+  withRouter,
+  withFirebase
+)(SignInFormBase);

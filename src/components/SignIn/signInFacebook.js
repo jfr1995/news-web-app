@@ -2,18 +2,21 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import { withFirebase } from "../Firebase/index";
 import { compose } from "recompose";
-import { styled } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core";
 import * as ROUTES from "../../constants /routes";
 import * as ERRORS from "../../constants /errorCodes";
-import Button from "@material-ui/core/Button";
 
-const FacebookButton = styled(Button)({
-  margin: "20px",
-  borderRadius: "50%",
-  height: "60px",
-  width: "60px",
-  backgroundColor: "#3b5998",
-  color: "white"
+const useStyles = theme => ({
+  root: {
+    width: "100%",
+    height: "100%",
+    border: "none",
+    backgroundColor: "#3b5998",
+    color: "white",
+    textTransform: "uppercase",
+    padding: "10px",
+    borderRadius: "5px"
+  }
 });
 
 class SignInFacebookBase extends Component {
@@ -49,11 +52,13 @@ class SignInFacebookBase extends Component {
   }; // end of onSubmit
   render() {
     const { error } = this.state;
+    const { classes } = this.props;
     return (
       <form onSubmit={this.onSubmit}>
-        <FacebookButton variant="contained" type="submit">
-          <i className="fab fa-facebook-f fa-2x"></i>{" "}
-        </FacebookButton>
+        <button className={classes.root} type="submit">
+          <i className="fab fa-facebook fa-3x" />
+        </button>
+
         {error && <p> {error.message}</p>}
       </form>
     );
@@ -61,6 +66,7 @@ class SignInFacebookBase extends Component {
 } // end of facebook base form
 
 export const SignInFacebook = compose(
+  withStyles(useStyles),
   withRouter,
   withFirebase
 )(SignInFacebookBase);

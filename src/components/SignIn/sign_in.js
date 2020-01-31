@@ -4,9 +4,9 @@ import { PasswordForgetLink } from "../PasswordForget/password_forget";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import { SignInTwitter } from "./signInTwitter";
-import { SignInGoogle } from "./signInGoogle";
-import { SignInFacebook } from "./signInFacebook";
-import { SignInForm } from "./signInForm";
+import { SignInGoogle } from "./SignInGoogle";
+import { SignInFacebook } from "./SignInFacebook";
+import { SignInForm } from "./SignInForm";
 import Divider from "@material-ui/core/Divider";
 import Fade from "@material-ui/core/Fade";
 
